@@ -37,8 +37,10 @@ public void verPantallaInicio() {
   image(fondo, 0, 0, width, height);
 }
 public void iniciarJuego() {
-  escenario.dibujar();
+  escenario.dibujarEscenario();
   escenario.dibujarObjetos();
+  escenario.personaje.display();
+  escenario.verificarColisiones();
 
 
   if (joyPad.isRightPressed()) {
@@ -76,3 +78,8 @@ public void keyReleased() {
     joyPad.setLeftPressed(false);
   }
 }
+
+
+
+
+  

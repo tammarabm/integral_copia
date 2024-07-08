@@ -22,5 +22,6 @@ class BonusSushi extends Objeto {
     this.transform.getPosicion().x-=(this.velocidad.x*Time.getDeltaTime(frameRate));; //Se mueve hacia la izquierda
     this.transform.getPosicion().y+= sin(angulo)*4; //Movimiento sinuoso en el eje Y. El valor que multiplica a la funcion seno controla cuanto sube y cuanto baja el sushi.Es decir ajusta la mplitud del movimiento sinuoso 
     this.angulo+=this.velocidadAngulo;  //Incrementar el angulo 
+    this.colisionador.setPosicion(this.transform.getPosicion());
   }
 }

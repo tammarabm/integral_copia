@@ -31,6 +31,7 @@ class Personaje implements IVisualizable{
     this.velocidad=velocidad;
     this.experiencia=experiencia;
     this.vida=vida;
+    this.colisionador= new Colisionador(this.transform.getPosicion(), 50);
     isJumping=false;
     velocidadVertical=0; 
     gravedad=1.0;
@@ -52,6 +53,7 @@ class Personaje implements IVisualizable{
         if(this.transform.getPosicion().x<-100){
           this.transform.getPosicion().x=width;
         }
+        this.colisionador.setPosicion(this.transform.getPosicion());
         break;
         
       }
@@ -60,6 +62,7 @@ class Personaje implements IVisualizable{
         if (this.transform.getPosicion().x>width){
           this.transform.getPosicion().x=-100;
         }
+        this.colisionador.setPosicion(this.transform.getPosicion());
         break;
       }
     }
@@ -87,11 +90,23 @@ class Personaje implements IVisualizable{
         isJumping = false;   //El personje ya no está saltando, está en el piso
       }
     }
+    this.colisionador.setPosicion(this.transform.getPosicion());
   }
   
   public void deslizar(){
   }
-   
+  public void reducirVida(int cantidad) {
+    this.vida -= cantidad;
+    if (this.vida < 0) {
+      this.vida = 0;
+    }
+  }
+  public void aumentarExperiencia(int cantidad){
+    this.experiencia+=cantidad;
+    if (this.experiencia>200){
+      println("Partida Completada/Ganada");
+    }
+  }
    
   //Métodos Accesores
   public void setVelocidad(PVector velocidad){
@@ -111,5 +126,8 @@ class Personaje implements IVisualizable{
   }
   public int getVida(){
     return this.vida;
+  }
+  public Colisionador getColisionador(){
+    return colisionador;
   }
 }

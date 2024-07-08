@@ -24,8 +24,13 @@ class Colisionador {
   }
 
   // Método para verificar si hay una colisión con otro colisionador
-  public boolean verificarColision(Colisionador otro) {
-    float distancia = PVector.dist(this.posicion, otro.getPosicion()); // Calcula la distancia entre los dos colisionadores
-    return distancia < (this.radio + otro.getRadio()); // Verifica si la distancia es menor que la suma de los radios
+  public boolean validarColision(Colisionador otro){
+    boolean isCollide=false;
+    float distancia= this.posicion.dist(otro.getPosicion());
+    if (distancia <(this.radio + otro.getRadio())){
+      isCollide = true;
+    }
+    //println(isCollide);
+    return isCollide;
   }
 }
