@@ -11,9 +11,10 @@ class Shuriken extends Objeto{
   
   //Metodos
   public void display(){
-  
+    this.imageComponent.displayImage(transform.getPosicion(), 50,50);
   }
   public void mover(){
+    this.transform.getPosicion().y+=(this.velocidad.y * Time.getDeltaTime(frameRate));
     
   }
 }

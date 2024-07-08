@@ -3,21 +3,18 @@ private Escenario escenario;
 private JoyPad joyPad;
 private int estado; //Indica en que estado se encuentra el juego
 private PImage fondo;
-private PImage titulo;
-private PImage start;
 
 public void setup(){
   size(640,480);
   estado= MaquinaDeEstados.INICIANDO;
   //manejadorObjetos=new ManejadorDeObjetos();
   joyPad= new JoyPad();
-  start=loadImage("Press Start.png");
-  titulo=loadImage("TITLE.png");
-  fondo=loadImage("PantallaInicio.jpeg");
+  fondo=loadImage("PantallaInicio.png");
+  
 }
 
 public void draw(){
-  background(0);
+  background(255);
   switch(estado){
     case MaquinaDeEstados.INICIANDO:
       verPantallaInicio();
@@ -44,13 +41,13 @@ public void finalizarJuego(){
 
 public void verPantallaInicio(){
   image(fondo, 0,0,width,height);
-  image(titulo,160,100,300,50);
-  image(start,140,230,300,50);
+
   
 }
 public void iniciarJuego(){
   escenario.dibujar();
   escenario.dibujarObjetos();
+
   
   if(joyPad.isRightPressed()){
     escenario.personaje.mover(1);
@@ -88,3 +85,8 @@ public void keyReleased(){
   }
  
 }
+
+
+
+
+  

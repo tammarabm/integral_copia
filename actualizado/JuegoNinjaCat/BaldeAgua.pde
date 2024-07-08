@@ -12,8 +12,10 @@ class BaldeAgua extends Objeto{
   //Metodos
   
   public void display(){   
+    this.imageComponent.displayImage(transform.getPosicion(), 50,50);
   }
 
   public void mover(){  
+    this.transform.getPosicion().x+=(this.velocidad.x*Time.getDeltaTime(frameRate));
   }
 }

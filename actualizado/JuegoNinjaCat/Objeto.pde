@@ -21,6 +21,4 @@ abstract class Objeto implements IVisualizable{
   //por la interfaz
   public void display(){
   }
- 
-  
 }
