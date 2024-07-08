@@ -29,11 +29,8 @@ public void draw() {
   }
 }
 public void finalizarJuego() {
-  PImage gameOver;
-  gameOver=loadImage("gmov.png");
-  imageMode(CENTER);
-  image(gameOver, width/2, height/2);
-  text("HOLA", width/2, height/2+200);
+  fill(0);
+  text("D:", width/2, height/2);
 }
 
 public void verPantallaInicio() {

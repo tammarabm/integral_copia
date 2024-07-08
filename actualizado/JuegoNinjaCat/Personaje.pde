@@ -2,6 +2,7 @@ class Personaje implements IVisualizable{
   //Atributos
   private Transform transform;
   private ImageComponent imageComponent;
+  private Colisionador colisionador;
   private int experiencia; 
   private int vida; 
   private PVector velocidad;

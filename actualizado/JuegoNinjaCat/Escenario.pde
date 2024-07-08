@@ -49,7 +49,11 @@ class Escenario{
     
     Transform transformShuriken = new Transform(new PVector(width/2, -50));
     ImageComponent imageShuriken= new ImageComponent("Shuriken0.png");
-    objetos.add(new Shuriken(transformShuriken, imageShuriken, new PVector(0,150)));
+    objetos.add(new Shuriken(transformShuriken, imageShuriken, new PVector(0,170)));
+    
+    Transform transformPerroMadera = new Transform(new PVector(width/2+100, -50));
+    ImageComponent imagePerroMadera= new ImageComponent("PerroMadera.png");
+    objetos.add(new PerroMadera(transformPerroMadera, imagePerroMadera, new PVector(0,150)));
   } 
   
   public void dibujarObjetos(){
@@ -60,14 +64,14 @@ class Escenario{
         o.mover();
         o.display();
         
+       
+         if (o instanceof BonusSushi && o.transform.getPosicion().x < -200) {
+            objetos.remove(i);
+            Transform transformBonusSushi = new Transform(new PVector(width, random(this.posicion.y+200,height-80)));
+            ImageComponent imageBonusSushi= new ImageComponent("BonusSushi.png");
+            BonusSushi nuevoSushi= new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(150,0));
+            objetos.add(nuevoSushi);
         
-        if (o instanceof BonusSushi && o.transform.getPosicion().x < -200) {
-          objetos.remove(i);
-          Transform transformBonusSushi = new Transform(new PVector(width, random(this.posicion.y+200,height-80)));
-          ImageComponent imageBonusSushi= new ImageComponent("BonusSushi.png");
-          BonusSushi nuevoSushi= new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(150,0));
-          objetos.add(nuevoSushi);
-          
         } else if (o instanceof BaldeAgua && o.transform.getPosicion().x > width) {
           objetos.remove(i);
           Transform transformBaldeAgua = new Transform(new PVector(-45, height-45));
@@ -79,8 +83,16 @@ class Escenario{
           objetos.remove(i);
           Transform transformShuriken = new Transform(new PVector(random(width), random(-200,-50)));
           ImageComponent imageShuriken= new ImageComponent("Shuriken0.png");
-          Shuriken nuevoShuriken= new Shuriken(transformShuriken, imageShuriken, new PVector(0,150));
+          Shuriken nuevoShuriken= new Shuriken(transformShuriken, imageShuriken, new PVector(0,170));
           objetos.add(nuevoShuriken);
+          
+        }
+        else if(o instanceof PerroMadera && o.transform.getPosicion().y > height){
+          objetos.remove(i);
+          Transform transformPerroMadera = new Transform(new PVector(random(width), random(-200,-50)));
+          ImageComponent imagePerroMadera= new ImageComponent("PerroMadera.png");
+          PerroMadera nuevoPerroMadera=new PerroMadera(transformPerroMadera, imagePerroMadera, new PVector(0,150));
+          objetos.add(nuevoPerroMadera);
         }
       }
     }
