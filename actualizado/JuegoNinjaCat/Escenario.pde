@@ -41,11 +41,15 @@ class Escenario{
   public void agregarObjetos(){
     Transform transformBonusSushi = new Transform(new PVector(width, height/2));
     ImageComponent imageBonusSushi= new ImageComponent("BonusSushi.png");
-    objetos.add(new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(11,4)));
+    objetos.add(new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(150,4)));
     
     Transform transformBaldeAgua = new Transform(new PVector(-45, height-45));
     ImageComponent imageBaldeAgua= new ImageComponent("BaldeAgua.png");
-    objetos.add(new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(4,0)));
+    objetos.add(new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(150,0)));
+    
+    Transform transformShuriken = new Transform(new PVector(width/2, -50));
+    ImageComponent imageShuriken= new ImageComponent("Shuriken0.png");
+    objetos.add(new Shuriken(transformShuriken, imageShuriken, new PVector(0,150)));
   } 
   
   public void dibujarObjetos(){
@@ -61,15 +65,26 @@ class Escenario{
           objetos.remove(i);
           Transform transformBonusSushi = new Transform(new PVector(width, random(this.posicion.y+200,height-80)));
           ImageComponent imageBonusSushi= new ImageComponent("BonusSushi.png");
-          BonusSushi nuevoSushi= new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(11,4));
+          BonusSushi nuevoSushi= new BonusSushi(transformBonusSushi, imageBonusSushi, new PVector(150,0));
           objetos.add(nuevoSushi);
+          
         } else if (o instanceof BaldeAgua && o.transform.getPosicion().x > width) {
           objetos.remove(i);
           Transform transformBaldeAgua = new Transform(new PVector(-45, height-45));
           ImageComponent imageBaldeAgua= new ImageComponent("BaldeAgua.png");
-          BaldeAgua nuevoBaldeAgua= new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(10,0));
+          BaldeAgua nuevoBaldeAgua= new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(150,0));
           objetos.add(nuevoBaldeAgua);
         }
+        else if (o instanceof Shuriken && o.transform.getPosicion().y > height) {
+          objetos.remove(i);
+          Transform transformShuriken = new Transform(new PVector(random(width), random(-200,-50)));
+          ImageComponent imageShuriken= new ImageComponent("Shuriken0.png");
+          Shuriken nuevoShuriken= new Shuriken(transformShuriken, imageShuriken, new PVector(0,150));
+          objetos.add(nuevoShuriken);
+        }
+      }
+    }
+  }
         /*if(o.transform.getPosicion().x<-200){
           objetos.remove(i);
           Transform transformBonusSushi = new Transform(new PVector(width, random(this.posicion.y+200,height-80)));
@@ -85,10 +100,6 @@ class Escenario{
           BaldeAgua nuevoBaldeAgua= new BaldeAgua(transformBaldeAgua, imageBaldeAgua, new PVector(10,0));
           objetos.add(nuevoBaldeAgua);
         }*/
-      }
-     
-    }
-  }
   
   //Metodos accesores
    public void setPosicion(PVector posicion){
