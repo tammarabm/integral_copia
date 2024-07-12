@@ -17,6 +17,6 @@ class BaldeAgua extends Objeto{
 
   public void mover(){  
     this.transform.getPosicion().x+=(this.velocidad.x*Time.getDeltaTime(frameRate));
-    this.colisionador.setPosicion(this.transform.getPosicion()); //
+    this.colisionador.setPosicion(this.transform.getPosicion()); 
   }
 }

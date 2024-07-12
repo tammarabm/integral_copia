@@ -24,7 +24,7 @@ class Colisionador {
   }
 
   // Método para verificar si hay una colisión con otro colisionador
-  public boolean validarColision(Colisionador otro){
+  public boolean verificarColision(Colisionador otro){
     boolean isCollide=false;
     float distancia= this.posicion.dist(otro.getPosicion());
     if (distancia <(this.radio + otro.getRadio())){

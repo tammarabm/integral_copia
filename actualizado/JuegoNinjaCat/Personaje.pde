@@ -93,14 +93,23 @@ class Personaje implements IVisualizable{
     this.colisionador.setPosicion(this.transform.getPosicion());
   }
   
-  public void deslizar(){
-  }
+  // Método para reducir la vida del personaje
   public void reducirVida(int cantidad) {
     this.vida -= cantidad;
     if (this.vida < 0) {
       this.vida = 0;
     }
   }
+  
+  //Método para reducir la experiencia del personaje
+  public void reducirExperiencia(int cantidad) {
+    this.experiencia -= cantidad;
+    if (this.experiencia < 0) {
+      this.experiencia = 0;
+    }
+  }
+  
+  // Método para aumentar la experiencia del personaje
   public void aumentarExperiencia(int cantidad){
     this.experiencia+=cantidad;
     if (this.experiencia>200){
